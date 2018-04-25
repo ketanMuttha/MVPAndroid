@@ -21,10 +21,11 @@ public class MVPApplicationModule {
 
     private final MVPApplication mApplication;
 
-    private final Context mContext=null;
+    private  Context mContext=null;
 
     public MVPApplicationModule(MVPApplication application) {
         mApplication = application;
+        mContext=mApplication.getApplicationContext();
     }
 
     @Provides
