@@ -7,4 +7,5 @@ package com.mvp.android.constant;
 public class Constant {
 
     public static final String PREFERENCES_FILE="com_mvp_android";
+    public static final String BASE_URL="https://www.metaweather.com";
 }

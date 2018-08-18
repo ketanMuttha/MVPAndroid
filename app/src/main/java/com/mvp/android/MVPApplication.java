@@ -2,9 +2,14 @@ package com.mvp.android;
 
 import android.app.Application;
 
+import com.mvp.android.constant.Constant;
 import com.mvp.android.dragger.injection.component.DaggerMVPApplicationComponent;
+import com.mvp.android.dragger.injection.component.DaggerNetworkComponent;
 import com.mvp.android.dragger.injection.component.MVPApplicationComponent;
+import com.mvp.android.dragger.injection.component.NetworkComponent;
+import com.mvp.android.dragger.injection.module.APIServiceModule;
 import com.mvp.android.dragger.injection.module.MVPApplicationModule;
+import com.mvp.android.dragger.injection.module.NetworkModule;
 
 import javax.inject.Inject;
 
@@ -14,20 +19,26 @@ import javax.inject.Inject;
 
 public class MVPApplication extends Application {
 
-    private MVPApplicationComponent mApplicationComponent;
+    private  MVPApplicationComponent mApplicationComponent;
 
     @Override
     public void onCreate() {
+        getApplicationComponent();
         super.onCreate();
-        getApplicationComponent().inject(this); // ApplicationComponent injects into "this" client
     }
 
-    public MVPApplicationComponent getApplicationComponent() {
+    public  MVPApplicationComponent getApplicationComponent() {
         if (mApplicationComponent == null) {
             mApplicationComponent = DaggerMVPApplicationComponent.builder()
-                    .mVPApplicationModule(new MVPApplicationModule(this))
+                    .networkComponent( getNetworkComponent())
                     .build();
         }
         return mApplicationComponent;
+    }
+
+    public NetworkComponent getNetworkComponent() {
+        return DaggerNetworkComponent.builder()
+                .networkModule(new NetworkModule(Constant.BASE_URL))
+                .build();
     }
 }

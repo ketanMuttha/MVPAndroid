@@ -1,5 +1,6 @@
 package com.mvp.android.dragger.injection.module;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.SyncStateContract;
@@ -38,5 +39,11 @@ public class MVPApplicationModule {
         return mContext;
     }
 
+    @Provides
+    @Singleton
+    protected Application provideApplication() {
+
+        return mApplication;
+    }
 
 }

@@ -3,5 +3,7 @@
 
     <!-- Login Screen-->
     <string name="loginscreen_title">Login</string>
+    <!-- Login Screen-->
+    <string name="weather_title">Weather Information</string>
 
 </resources>

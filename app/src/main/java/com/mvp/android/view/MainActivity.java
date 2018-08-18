@@ -1,6 +1,7 @@
 package com.mvp.android.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        ((MVPApplication)getApplication()).getApplicationComponent().inject(this);
+
 
     }
 
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.button)
     public void Login(View view) {
-        Toast.makeText(context,"Main activity resume",Toast.LENGTH_SHORT).show();
+        Intent weatherIntent=new Intent(this,WeatherActivity.class);
+        startActivity(weatherIntent);
     }
 
     @Override
