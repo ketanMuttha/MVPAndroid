@@ -15,9 +15,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 
-/**
- * Created by kmutt on 4/20/18.
- */
+
 
 @ActivityScope
 @Component(modules = {MVPApplicationModule.class, APIServiceModule.class}, dependencies = NetworkComponent.class)
